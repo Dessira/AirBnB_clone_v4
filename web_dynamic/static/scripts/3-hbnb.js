@@ -23,25 +23,29 @@ $(document).ready(function () {
         }
       }
     });
+    
     $.ajax({
       url: "http://0.0.0.0:5001/api/v1/places_search/",
       type: "POST",
       data: JSON.stringify({data:"test"}),
       contentType: "application/json",
-      sucess: function(data){
-	for (place in data){
+      success: function(data){
+	for (let place = 0; place < data.length; place++){
+    console.log(data[place])
+	  new_sec = $('#pl');
 	  new_article = $('<article></article>');
 	  title_div = $('<div class="title_box"></div>');
-	  title_div.append('<h2>' + place.name + '</h2>');
-	  title_div.append('<div class="price_by_night">' + place.price_by_night + '</div>');
-	  new_article.append(title_div);
+    new_article.append(title_div);
+	  title_div.append('<h2>' + data[place].name + '</h2>');
+	  title_div.append('<div class="price_by_night">' + data[place].price_by_night + '</div>');
 	  info_div = $('<div class="information"></div>');
-	  info_div.append('<div class="max_guest">' + place.max_guest + '</div>');
-	  info_div.append('<div class="number_rooms">' + place.number_rooms + '</div>');
-	  info_div.append('<div class="number_bathrooms">' + place.number_bathrooms + '</div>');
+	  info_div.append('<div class="max_guest">' + data[place].max_guest + '</div>');
+	  info_div.append('<div class="number_rooms">' + data[place].number_rooms + '</div>');
+	  info_div.append('<div class="number_bathrooms">' + data[place].number_bathrooms + '</div>');
 	  new_article.append(info_div);
-	  new_article.append('<div class="description">' + place.description + '</div>');
-	  $(".places").append(new_article);
+	  new_article.append('<div class="description">' + data[place].description + '</div>');
+	  // $(".places").append(new_article);
+    new_sec.append(new_article);
       }
       }
     });
