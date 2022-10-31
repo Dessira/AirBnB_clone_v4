@@ -29,7 +29,6 @@ $(document).ready(function () {
       data: JSON.stringify({data:"test"}),
       contentType: "application/json",
       sucess: function(data){
-<<<<<<< HEAD
 	for (place in data){
 	  new_article = $('<article></article>');
 	  title_div = $('<div class="title_box"></div>');
@@ -46,12 +45,4 @@ $(document).ready(function () {
       }
       }
     });
-=======
-	/*for (place in data){
-	  new_article = $(<article></article>);
-	  new_article.append(<div class="title_box">
-            <h2>{{ place.name }}</h2><div class="price_by_night">${{ place.price_by_night }}</div>
-          </div>)*/
-      }
->>>>>>> d206eb5da95db11417bbe867bfba93afa1502688
   });
