@@ -13,4 +13,14 @@ $(document).ready(function () {
         $('div.amenities > h4').html('&nbsp;');
       }
     });
+    $.get('http://0.0.0.0:5001/api/v1/status/', function (data, textStatus) {
+      if (textStatus === 'success') {
+        if (data.status==='OK') {
+          $('#api_status').addClass('available');
+        }
+        else{
+            $('#api_status').removeClass('available');
+        }
+      }
+    });
   });
